@@ -1,0 +1,131 @@
+@use '$scss/set/variable' as var;
+
+.about{
+    .bg02{
+        @include var.absDefault();
+        width:100%;
+        height:100%;
+        background:var.$white;
+        mix-blend-mode:difference;
+        svg{
+            width:100%;
+            height:100%
+        }
+    }
+    .title{
+        @include var.flex(center);
+        > div{
+            position:relative;
+        }
+        .small{
+            @include var.setFont(2.4rem, 300);
+            word-spacing:0;
+            margin-top:1rem
+        }
+        .dot{
+            position:absolute;
+            top:1rem;
+            left:-10rem;
+            @include var.circle(7rem);
+            box-shadow:5px 5px 5px rgba(0,0,0,.2);
+            overflow:hidden
+        }
+    }
+    .c_info{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:20rem;
+        padding-top:15rem;
+        dl:not(:first-child){
+            padding-top:10rem
+        }
+        dt{
+            @include var.setFont(2.4rem, 550);
+            margin-bottom:4rem
+        }
+        .contents{
+            @include var.flex(flex-start, flex-start, nowrap);
+            gap:4rem;
+            @include var.setFont(1.8rem, 300);
+            margin-bottom:3rem;
+            .years{
+                min-width:13.5rem;
+                white-space:nowrap
+            }
+            span{
+                display:block
+            }
+            .value{
+                @include var.setFont(1.5rem, 500);
+                // color:var.$pink;
+                margin-top:1.5rem;
+                line-height:1.4
+            }
+        }
+    }
+    .tools{
+        dd{
+            display:grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap:3rem;
+            text-align:center;
+            font-size:1.6rem;
+            line-height:1.3;
+            white-space:nowrap
+        }
+        img{
+            height:8rem;
+            margin-bottom:1rem
+        }
+    }
+    .skills{
+        dd > div{
+            @include var.flex(flex-start, center);
+            gap:2rem;
+            text-align:right;
+            margin-bottom:1.5rem
+        }
+        p{
+            width:20%;
+            font-size:1.8rem
+        }
+        .track{
+            position:relative;
+            width:65%;
+            height:1.2rem;
+            border-radius:1.2rem;
+            border:2px solid var.$pink;
+            background:var.$white;
+            overflow:hidden
+        }
+        .gauge{
+            @include var.absDefault();
+            bottom:0;
+            background:var.$pink;
+            border-radius:1.5rem;
+            transform-origin:0 50%;
+            //transform:scaleX(0.67);
+            &.gauge01{
+                width:90%
+            }
+            &.gauge02{
+                width:90%
+            }
+            &.gauge03{
+                width:80%
+            }
+            &.gauge04{
+                width:65%
+            }
+            &.gauge05{
+                width:80%
+            }
+            &.gauge06{
+                width:30%
+            }
+            &.gauge07{
+                width:30%
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+@use '$scss/set/variable' as var;
+
+.intro{
+    height:100vh;
+    color:var.$white;
+    .inner{
+        @include var.flex(center, flex-start, wrap, column)
+    }
+    .svgText{
+        height:15rem;
+        font-size:10rem;
+        overflow:visible
+    }
+    .fillText{
+        animation:upText 1s ease 0.4s forwards
+    }
+    .coment{
+        font-size:2.2rem;
+        line-height:1.38;
+        margin-top:5rem
+    }
+    .scrollDown{
+        position:absolute;
+        right:7rem;
+        bottom:10rem;
+        p{
+            line-height:2.4rem;
+            writing-mode:vertical-lr;
+            transform:rotate(180deg)
+        }
+        .shape{
+            @include var.flex(center);
+            @include var.circle(2.4rem);
+            background:var.$white;
+            color:var.$black;
+            margin-top:1rem;
+            overflow:hidden;
+            animation:bounce 0.8s ease infinite alternate;
+            svg{
+                transform:translateY(-0.1rem)
+            }
+        }
+    }
+}
