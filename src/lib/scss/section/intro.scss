@@ -3,16 +3,16 @@
 .intro{
     height:100vh;
     color:var.$white;
+    mix-blend-mode:hard-light;
     .inner{
         @include var.flex(center, flex-start, wrap, column)
     }
-    .svgText{
-        height:15rem;
+    .title{
+        position:relative;
         font-size:10rem;
-        overflow:visible
-    }
-    .fillText{
-        animation:upText 1s ease 0.4s forwards
+        .outline{
+            stroke-dasharray:300px
+        }
     }
     .coment{
         font-size:2.2rem;
@@ -40,5 +40,24 @@
                 transform:translateY(-0.1rem)
             }
         }
+    }
+    @include var.custom(var.$mobile){
+        .coment{
+            font-size:2.4rem
+        }
+        .scrollDown{
+            right:5rem;
+            bottom:5rem;
+            font-size:2rem;
+            p{
+                line-height:3.5rem
+            }
+            .shape{
+                @include var.circle(3.5rem)
+            }
+        }
+    }
+    @include var.custom(500px){
+        
     }
 }

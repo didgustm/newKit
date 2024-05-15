@@ -1,21 +1,15 @@
 @use '$scss/set/variable' as var;
 
 .about{
-    .bg02{
-        @include var.absDefault();
-        width:100%;
-        height:100%;
-        background:var.$white;
-        mix-blend-mode:difference;
-        svg{
-            width:100%;
-            height:100%
-        }
-    }
+    color:var.$white;
     .title{
         @include var.flex(center);
         > div{
             position:relative;
+        }
+        p:not(.small){
+            text-shadow:3px 3px 5px var.$pink;
+            filter:drop-shadow(-2px -2px 2px var.$mint)
         }
         .small{
             @include var.setFont(2.4rem, 300);
@@ -27,27 +21,32 @@
             top:1rem;
             left:-10rem;
             @include var.circle(7rem);
-            box-shadow:5px 5px 5px rgba(0,0,0,.2);
-            overflow:hidden
+            box-shadow:2px 2px 5px var.$mint;
+            overflow:hidden;
+            img{
+                width:100%;
+                object-fit:cover
+            }
         }
     }
     .c_info{
         display:grid;
         grid-template-columns:1fr 1fr;
-        gap:20rem;
+        gap:0 20rem;
         padding-top:15rem;
         dl:not(:first-child){
             padding-top:10rem
         }
         dt{
             @include var.setFont(2.4rem, 550);
-            margin-bottom:4rem
+            margin-bottom:4rem;
         }
         .contents{
             @include var.flex(flex-start, flex-start, nowrap);
             gap:4rem;
             @include var.setFont(1.8rem, 300);
             margin-bottom:3rem;
+            line-height:1.3;
             .years{
                 min-width:13.5rem;
                 white-space:nowrap
@@ -57,7 +56,7 @@
             }
             .value{
                 @include var.setFont(1.5rem, 500);
-                // color:var.$pink;
+                color:var.$gray;
                 margin-top:1.5rem;
                 line-height:1.4
             }
@@ -75,7 +74,10 @@
         }
         img{
             height:8rem;
-            margin-bottom:1rem
+            margin-bottom:1rem;
+            &.invert{
+                filter:invert(1)
+            }
         }
     }
     .skills{
@@ -94,37 +96,97 @@
             width:65%;
             height:1.2rem;
             border-radius:1.2rem;
-            border:2px solid var.$pink;
             background:var.$white;
             overflow:hidden
         }
         .gauge{
             @include var.absDefault();
-            bottom:0;
-            background:var.$pink;
+            right:0;
+            height:110%;
+            background:linear-gradient(90deg, rgba(234,68,90,.5), var.$pink 80%);
             border-radius:1.5rem;
             transform-origin:0 50%;
-            //transform:scaleX(0.67);
+            clip-path:polygon(0 -5%, var(--x) -5%, var(--x) 105%, 0 105%);
             &.gauge01{
-                width:90%
+                --x:90%
             }
             &.gauge02{
-                width:90%
+                --x:90%
             }
             &.gauge03{
-                width:80%
+                --x:80%
             }
             &.gauge04{
-                width:65%
+                --x:65%
             }
             &.gauge05{
-                width:80%
+                --x:80%
             }
             &.gauge06{
-                width:30%
+                --x:30%
             }
             &.gauge07{
-                width:30%
+                --x:30%
+            }
+        }
+    }
+
+    @include var.custom(var.$mobile){
+        .title{
+            .dot{
+                top:0;
+                left:-12rem;
+                @include var.circle(9rem)
+            }
+        }
+        .c_info{
+            display:block;
+            dl:not(:first-child){
+                padding-top:7rem
+            }
+        }
+        .tools{
+            padding-top:7rem;
+            dd{
+                grid-template-columns:repeat(5, 1fr)
+            }
+            img{
+                width:6rem
+            }
+        }
+    }
+    @include var.custom(640px){
+        .c_info{
+            dt{
+                font-size:2.8rem
+            }
+            .contents{
+                font-size:2.2rem;
+                .years{
+                    min-width:27%
+                }
+                .value{
+                    font-size:1.8rem
+                }
+            }
+        }
+        .tools{
+            dd{
+                font-size:2rem
+            }
+        }
+        .skills{
+            dd  > div{
+                margin-bottom:2.5rem
+            }
+            p{
+                width:15%;
+                font-size:2rem
+            }
+            .track{
+                width:55%;
+                height:1.5rem;
+                border-radius:1.5rem
             }
         }
     }

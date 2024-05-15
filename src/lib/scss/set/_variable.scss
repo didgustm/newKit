@@ -2,6 +2,7 @@ $pink:#EA445A;
 $mint:#74F0ED;
 $black:#000;
 $white:#fff;
+$gray:#cdcdcd;
 
 $tablet:1200px;
 $mobile:768px;
@@ -74,16 +75,6 @@ $landscape:500px;
     }
 }
 
-@keyframes upText{
-    50%{        
-        transform:translate(var(--x, 2.5rem), var(--y, -2.5rem))
-    }
-    100%{
-        text-shadow:3px 3px 5px $pink;
-        filter:drop-shadow(-2px -2px 2px $mint);
-        transform:translate(var(--x, 2.5rem), var(--y, -2.5rem))
-    }
-}
 @keyframes fade{
     to{
         transform:scale(1) translate(0);
@@ -92,7 +83,7 @@ $landscape:500px;
 }
 @keyframes bounce{
     to{
-        transform:translateY(16px)
+        transform:translateY(1.6rem)
     }
 }
 @keyframes load_circle{

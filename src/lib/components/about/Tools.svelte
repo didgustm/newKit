@@ -7,7 +7,7 @@
     import ai from '$img/about/ai.svg'
 </script>
 
-<dl class="tools">
+<dl class="tools aos">
     <dt>TOOLS</dt>
     <dd>
         <div>
@@ -15,7 +15,7 @@
             <p>Visual Studio <br> Code</p>
         </div>
         <div>
-            <img src="{ github }" alt="">
+            <img src="{ github }" alt="" class="invert">
             <p>Github</p>
         </div>
         <div>

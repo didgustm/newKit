@@ -1,0 +1,7 @@
+@use '$scss/set/variable' as var;
+
+.bg03{
+    @include var.posWide();
+    background:linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(70,70,70,1) 50%, rgba(0,0,0,1) 100%);
+    background-size:400% 400%
+}

@@ -1,10 +1,4 @@
-<script>
-    import html from '$img/about/html.svg'
-    import css from '$img/about/css.svg'
-    import js from '$img/about/js.svg'
-</script>
-
-<dl class="skills">
+<dl class="skills aos">
     <dt>SKILLS</dt>
     <dd>
         <div>

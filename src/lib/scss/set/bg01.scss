@@ -1,6 +1,7 @@
 @use '$scss/set/variable' as var;
 
 .bg01{
+    opacity:0;
     position:absolute;
     width:100%;
     height:100%;
@@ -27,17 +28,16 @@
     .line05{
         animation:draw 15s linear infinite
     }
-    .rect01{
+    .shape01{
         position:absolute;
         right:30%;
-        top:calc(50% - 12.5rem);
+        top:calc(50% - 18.5rem);
         width:25rem;
         height:25rem;
-        background:rgba(255,255,255,.3);
+        background-image: linear-gradient(120deg, rgba(116, 240, 237, .5) 0%, rgba(234, 68, 90, .5) 100%);
+        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
         backdrop-filter:blur(2px);
-        border:0.5rem solid;
-        border-image:linear-gradient(140deg, var.$pink, var.$mint);
-        border-image-slice:1
+        animation: morph 8s linear infinite; 
     }
     .rect02{
         position:absolute;

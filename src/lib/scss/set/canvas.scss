@@ -1,0 +1,9 @@
+@use '$scss/set/variable' as var;
+
+.canvas{
+    @include var.posWide();
+    z-index:2;
+    canvas{
+        @include var.absDefault(0, calc(50% - 800px))
+    }
+}

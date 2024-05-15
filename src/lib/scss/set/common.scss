@@ -15,7 +15,7 @@ html{
         font-size:1.3021vw
     }
     @include var.custom(320px){
-        font-size:1.45vw
+        font-size:1.5vw
     }
     @media (max-height: 520px) and (min-width: 560px){
         font-size:0.7571vw
@@ -30,9 +30,10 @@ body{
     @include var.fontWeight(400)
 }
 .fixBg{
-    position:absolute;
+    position:fixed;
     width:100vw;
-    height:100vh
+    height:100vh;
+    background:var.$black
 }
 section{
     position:relative;
@@ -51,17 +52,29 @@ section{
         @include var.custom(var.$mobile){
             padding:15rem 5rem
         }
+        @media (max-height: 520px) and (min-width: 560px){
+            max-width:80%
+        }
     }
 }
 .title{
+    position:relative;
     @include var.setFont(8rem, 800);
     word-spacing:-0.1em;
-    @include var.custom(var.$mobile){
-        font-size:5rem
-    }
-    @include var.custom(500px){
-        font-size:5.5rem
-    }
+    .svgText{
+        position:absolute;
+        width:100%;
+        height:100%;
+        overflow:visible;
+        &+.fillText{
+            text-shadow:3px 3px 5px var.$pink;
+            filter:drop-shadow(-2px -2px 2px var.$mint);
+            transform:translate(var(--x, 0), var(--y, 0))
+        }
+    }   
+}
+.over *{
+    pointer-events:none
 }
 .cursor{
     position:fixed;
@@ -70,7 +83,29 @@ section{
     mix-blend-mode:difference;
     transform:translate(-50%, -50%) translate(var(--x, 0px), var(--y, 0px));
     pointer-events:none;
-    z-index:101
+    z-index:101;
+    .scale{
+        @include var.absDefault(calc(50% - 5rem), calc(50% - 5rem));
+        @include var.circle(10rem);
+        background:rgba(255,255,255,.01);
+        backdrop-filter:blur(2px);
+        box-shadow:3px 3px 10px var.$mint, -3px -3px 10px var.$pink;
+        opacity:0;
+        transform:sclae(0);
+        visibility:hidden;
+        z-index:-1;
+        transition:transform, opacity 1s ease;
+    }
+    &.overlay{
+        background:transparent;
+        mix-blend-mode:normal;
+        .scale{
+            transform:scale(1);
+            opacity:1;
+            visibility:visible;
+            z-index:1
+        }
+    }
 }
 html.lenis {
     height: auto;

@@ -1,4 +1,4 @@
-<dl class="career">
+<dl class="career aos">
     <dt>CAREERS</dt>
     <dd>
         <div class="contents">

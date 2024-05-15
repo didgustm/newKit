@@ -1,5 +1,5 @@
 <script>
-    import '$scss/set/intro_bg.scss';
+    import '$scss/set/bg01.scss';
     
     export let w, h
 </script>
@@ -51,9 +51,9 @@
             />
         </g>
     </svg>
-    <div class="rect">
-        <div class="rect01">
+    <!-- <div class="rect">
+        <div class="shape01">
             <span class="rect02"></span>
         </div>
-    </div>
+    </div> -->
 </div>

@@ -2,7 +2,7 @@
     import src from '$img/about/my.jpg'
 </script>
 
-<h2 class="title">
+<h2 class="title aos">
     <div>
         <p>HELLO</p>
         <p>I'M HAN</p>

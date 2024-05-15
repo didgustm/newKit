@@ -13,21 +13,29 @@
     register();
 </script>
 
-<div class="grid">
+<div class="grid aos">
     <swiper-container
         slides-per-view={`auto`}
-        space-between={40}
+        space-between={20}
         speed={700}
         scrollbar={true}
         grid={{
             rows: 2,
             fill: 'column'
         }}
-        
+        breakpoints={{
+            768: {
+                spaceBetween:40,
+                grid: {
+                    fill: 'column',
+                    rows: 2
+                }
+            }
+        }}
     >
         {#each newArr as list, idx}
         <swiper-slide>
-            <a href="" class="box box{idx+1}">
+            <a href="{list.path}" class="over box box{idx+1}">
                 <div class="img">
                     <img src="{ thumnails[idx] }" alt="{ list.meta.title }" loading="lazy">
                 </div>

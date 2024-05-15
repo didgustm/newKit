@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
     import '$scss/section/detail.scss'
     import { fade } from 'svelte/transition'
     import { onMount } from 'svelte'
@@ -69,4 +69,4 @@
     {#if loading}
     <Loading />
     {/if}
-</section> -->
+</section>
