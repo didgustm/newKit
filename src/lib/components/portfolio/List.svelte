@@ -35,7 +35,7 @@
     >
         {#each newArr as list, idx}
         <swiper-slide>
-            <a href="{list.path}" class="over box box{idx+1}">
+            <a href="{list.path}" class="over box box{idx+1}" data-sveltekit-preload-data="false">
                 <div class="img">
                     <img src="{ thumnails[idx] }" alt="{ list.meta.title }" loading="lazy">
                 </div>

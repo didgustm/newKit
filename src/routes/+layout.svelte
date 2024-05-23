@@ -1,5 +1,7 @@
 <script>
     import '$scss/set/common.scss'
+    import { fade } from 'svelte/transition'
+    import { navigating } from '$app/stores'
     import { onMount } from 'svelte'
     import { spring } from 'svelte/motion'
     import Lenis from '@studio-freight/lenis'
@@ -7,7 +9,8 @@
     import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
     import ScrollToPlugin from 'gsap/dist/ScrollToPlugin'
     import { throttle } from '$js/throttle'
-    import Quick from '$comp/quick/Quick.svelte';
+    import Quick from '$comp/quick/Quick.svelte'
+    import Loading from '$comp/detail/Loading.svelte';
     
     gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
     let isMobile, cursor, cc = '';
@@ -92,6 +95,13 @@
 </div>
 {/if}
 <Quick { strokeOffset } { scrollTo } />
+{#key data.currentRoute}
 <main>
     <slot />
 </main>
+{/key}
+{#if $navigating}
+<div out:fade={{ duration:500, delay:300 }}>
+    <Loading />
+</div>
+{/if}

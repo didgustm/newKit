@@ -9,8 +9,7 @@
     import { faChevronUp, faXmark } from '@fortawesome/free-solid-svg-icons'
     import GridBg from '$comp/common/GridBg.svelte'
     import Top from '$comp/detail/Top.svelte'
-    import View from '$comp/detail/View.svelte'
-    import Loading from '$comp/detail/Loading.svelte';
+    import View from '$comp/detail/View.svelte';
 
     export let data;
     let w = 0, h = 0;
@@ -43,7 +42,7 @@
                 trigger:'.detail'
             }
         });
-        tl.fromTo('.fadeup', { yPercent:100, opacity:0 }, { yPercent:0, opacity:1, duration:1, delay:1 })
+        tl.fromTo('.fadeup', { yPercent:100, opacity:0 }, { yPercent:0, opacity:1, duration:1 })
         .fromTo('.view_img', { opacity:0 }, { opacity:1, duration:1, ease:'none' }, '<');
     })
     
@@ -70,8 +69,5 @@
     <button class="btn_top over" in:fade out:fade={{ duration:100 }} on:click={goTop}>
         <svelte:component this={ Fa } icon={ faChevronUp } size="2x" />
     </button>
-    {/if}
-    {#if loading}
-    <Loading />
     {/if}
 </section>
