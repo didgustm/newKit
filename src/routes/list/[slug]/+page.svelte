@@ -7,11 +7,13 @@
     import { views } from '$js/view'
     import Fa from 'svelte-fa'
     import { faChevronUp, faXmark } from '@fortawesome/free-solid-svg-icons'
+    import GridBg from '$comp/common/GridBg.svelte'
     import Top from '$comp/detail/Top.svelte'
     import View from '$comp/detail/View.svelte'
     import Loading from '$comp/detail/Loading.svelte';
 
     export let data;
+    let w = 0, h = 0;
     gsap.registerPlugin(ScrollTrigger);
     let detail, loading = false, scrollY = 0;
     const arr = [...views].reverse(),
@@ -49,12 +51,15 @@
 
 <svelte:window
     bind:scrollY={scrollY}
+    bind:innerWidth={w}
+    bind:innerHeight={h}
 />
 <section 
     class="detail"
     bind:this={detail}
 >
-    <button class="buttons close" on:click={goback}>
+    <GridBg { w } { h } />
+    <button class="buttons close over" on:click={goback}>
         <svelte:component this={ Fa } icon={ faXmark } size="3x" />
     </button>
     <div class="inner">
@@ -62,7 +67,7 @@
     </div>
     <View { data } { src } />
     {#if scrollY > 300}
-    <button class="btn_top" in:fade out:fade={{ duration:100 }} on:click={goTop}>
+    <button class="btn_top over" in:fade out:fade={{ duration:100 }} on:click={goTop}>
         <svelte:component this={ Fa } icon={ faChevronUp } size="2x" />
     </button>
     {/if}

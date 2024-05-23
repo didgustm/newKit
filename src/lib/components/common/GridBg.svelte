@@ -1,10 +1,8 @@
-<script>
-    import '$scss/set/bg01.scss';
-    
+<script>    
     export let w, h
 </script>
 
-<div class="bg01">
+<div class="grid_bg">
     <svg>
         <defs>
             <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
@@ -12,8 +10,8 @@
                 <path d="M 100 0 L 0 0 0 100" fill="#000" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
             </pattern>
             <linearGradient id="grd" x1="0%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%" stop-color="#EA445A" />
-                <stop offset="100%" stop-color="#74F0ED" />
+                <stop offset="0%" stop-color="transparent" />
+                <stop offset="100%" stop-color="#000" />
             </linearGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
@@ -50,10 +48,6 @@
                 opacity="0.5"
             />
         </g>
+        <rect width="100%" height="100%" fill="url(#grd)" />
     </svg>
-    <!-- <div class="rect">
-        <div class="shape01">
-            <span class="rect02"></span>
-        </div>
-    </div> -->
 </div>

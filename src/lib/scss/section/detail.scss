@@ -2,24 +2,26 @@
 
 
 .detail{
-    
-    
+    background:var.$black;
+    color:var.$white;
+    z-index:100;
     .top{
-        position:sticky;
-        top:0;
         text-align:center
     }
     .close{
         position:absolute;
         top:3rem;
         right:3rem;
+        filter:drop-shadow(-2px -2px 2px var.$mint);
         z-index:1
     }
     .title{
-        @include var.setFont(7rem, 550);
+        @include var.fontWeight(550);
         letter-spacing:-.2rem;
         line-height:1.2;
         margin-top:2.5rem;
+        text-shadow:3px 3px 5px var.$pink;
+        filter:drop-shadow(-2px -2px 2px var.$mint);
         overflow:hidden;
         p{
             opacity:1;
@@ -36,7 +38,7 @@
         margin:2rem 0;
         color:var.$gray;
         &:hover{
-            color:var.$black;
+            color:var.$white;
             text-decoration:underline
         }
     }
@@ -50,25 +52,24 @@
     }
     .view{
         position:relative;
-        background:var.$white;
-        margin:0 1.6rem;
-        background:#f7f7f7;
-        border-radius:3rem 3rem 0 0;
-        z-index:2
+        background:linear-gradient(180deg, rgba(0,0,0,.4), var.$black);
+        margin:0 1.6rem
     }
     .view_img{
         max-width:1920px;
-        padding:10rem 14rem;
-        margin:0 auto;
+        margin:5rem 14rem 10rem;
         text-align:center;
+        border-radius:1.5rem;
+        overflow:hidden
     }
     .btn_top{
         position:fixed;
         bottom:1rem;
         right:2rem;
+        background:var.$white;
+        color:var.$black;
         @include var.circle(5rem);
-        background:var.$black;
-        color:#fff;
+        filter:drop-shadow(-2px -2px 2px var.$mint);
         z-index:3;
         &::before{
             transform:scale(1);
@@ -79,7 +80,7 @@
     @include var.custom(1400px){
         .view{
             .view_img{
-                padding:10rem 5rem
+                margin:10rem 5rem
             }
         }
     }
@@ -92,22 +93,26 @@
         }
     }
     @include var.custom(var.$mobile){
-        .title{
-            font-size:5.5rem
-        }
         .inner{
             padding:{
                 top:7rem;
                 bottom:7rem
             }
         }
+        .descript{
+            font-size:2.6rem
+        }
         .view{
             .view_img{
-                padding:5rem 3rem
+                margin:5rem 3rem
             }
         }
         .url{
-            color:var.$black
+            color:var.$white;
+            font-size:2.4rem
+        }
+        .category{
+            font-size:2rem
         }
     }
     @include var.custom(500px){
@@ -115,18 +120,6 @@
             top:1rem;
             right:1rem;
             font-size:2.4rem
-        }
-        .descript{
-            font-size:2.4rem
-        }
-        .title{
-            font-size:8rem
-        }
-        .url{
-            font-size:2rem
-        }
-        .category{
-            font-size:1.8rem
         }
         .btn_top{
             width:7rem;

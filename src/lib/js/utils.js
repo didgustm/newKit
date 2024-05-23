@@ -79,8 +79,12 @@ export const pfScr = (motion) => {
     motion02 = gsap.timeline({ paused:true });
     motion01.fromTo('.portfolio .outline', { strokeDashoffset:'51rem' }, { strokeDashoffset:0, duration:2, ease:'none' })
     .fromTo('.portfolio .fillText', { opacity:0 }, { opacity:1, ease:'none' }, '-=1');
-    motion02.fromTo('.portfolio swiper-slide:nth-child(odd)', { opacity:0, xPercent:-25 }, { opacity:1, x:0, xPercent:0, duration:1 })
-    .fromTo('.portfolio swiper-slide:nth-child(even)', { opacity:0, xPercent:25 }, { opacity:1, x:0, xPercent:0, duration:1 }, '<');
+    motion02.fromTo('.portfolio swiper-slide:nth-child(odd)', { opacity:0, xPercent:-25 }, { opacity:1, x:0, xPercent:0, duration:1,
+        onStart: () => { document.querySelectorAll('.portfolio swiper-slide').forEach(x => x.style.pointerEvents = 'auto') }
+     })
+    .fromTo('.portfolio swiper-slide:nth-child(even)', { opacity:0, xPercent:25 }, { opacity:1, x:0, xPercent:0, duration:1,
+        onStart: () => { document.querySelectorAll('.portfolio swiper-slide').forEach(x => x.style.pointerEvents = 'auto') }
+     }, '<');
     
     aos.forEach((x, idx) => {
         ScrollTrigger.create({
@@ -146,5 +150,15 @@ export const contactScr = (motion) => {
                 }
             }
         })
+    })
+}
+
+export const fixedScr = (motion) => {
+    let pin = gsap.timeline({
+        scrollTrigger: {
+            trigger: 'main',
+            pin: '.fixBg',
+            markers: true
+        }
     })
 }

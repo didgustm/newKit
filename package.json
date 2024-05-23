@@ -9,6 +9,7 @@
 	},
 	"devDependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.5.2",
+		"@studio-freight/lenis": "^1.0.42",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",

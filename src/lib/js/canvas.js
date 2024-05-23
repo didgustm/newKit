@@ -1,19 +1,15 @@
 import { throttle } from './throttle';
 import Matter from 'matter-js';
 
-function Canvas(canvas){
+function DrawCanvas(canvas){
     let frameCount = 0;
     let particles = [];
+    let pass01 = false, pass02 = false, pass03 = false;
     // setup
     this.Engine = Matter.Engine;
     this.Runner = Matter.Runner;
     this.Render = Matter.Render;
-    const Bodies = Matter.Bodies,
-                Body = Matter.Body,
-                Common = Matter.Common,
-                Composite = Matter.Composite,
-                Constraint = Matter.Constraint,
-                Event = Matter.Events;
+    const { Bodies, Body, Common, Composite, Constraint, Events } = Matter;
     this.engine = this.Engine.create(),
     this.runner = this.Runner.create();
     const world = this.engine.world;
@@ -35,7 +31,7 @@ function Canvas(canvas){
     // floor
     let floor = Bodies.rectangle(800, innerHeight+10, 1600, 20, {
         isStatic: true,
-        label: 'floor',
+        label: ['floor', 'static'],
         render: { fillStyle: '#000' }
     });
 
@@ -79,8 +75,6 @@ function Canvas(canvas){
         chamfer: { radius:10 },
         restitution: 0,
         friction: 0,
-        // inertia: Infinity,
-        mass: 1,
         render: {
             fillStyle: '#74F0ED'
         }
@@ -93,11 +87,21 @@ function Canvas(canvas){
         }
     });
 
+    // stack
+    let stack = Matter.Composites.stack(50, 80, 20, innerHeight / 60 - 3, 80, 60, function(x, y, row, column){
+        if(column % 2 == 0){
+            return Bodies.circle(x, y, 1, { isStatic:true, render: { fillStyle: 'rgba(255,255,255,.4)' } })
+        } else{
+            return Bodies.circle(100+(row*81), y, 1, { isStatic:true, render: { fillStyle: 'rgba(255,255,255,.4)' } })
+        }
+    });
+
     // add
     Composite.add(world, [floor, circleA, circleAC, triA, triAC, triB, triBC]);
+    // Composite.add(world, stack)
     newParticle();
 
-    Event.on(this.engine, 'afterUpdate', throttle(() => {
+    Events.on(this.engine, 'afterUpdate', throttle(() => {
         frameCount++;
         if(frameCount % 10 == 0){
             newParticle();
@@ -108,7 +112,7 @@ function Canvas(canvas){
                 particles.splice(idx, 1);
             }
         });
-    }, 100))
+    }, 100));
 
     // particles
     function Particle(x, y, r){
@@ -116,7 +120,7 @@ function Canvas(canvas){
             restitution: 0.6,
             friction: 0,
             frictionStatic: 0.1,
-            label: 'particle',
+            label: ['particle', 'static'],
             slop: 0.1,
             render: { fillStyle: '#fff' }
         }
@@ -131,10 +135,10 @@ function Canvas(canvas){
         }
     }
     function newParticle(){
-        let p = new Particle(Common.random(600, 1000), 0, Common.random(10,30));
+        let p = new Particle(Common.random(600, 1000), 0, Common.random(18,30));
         particles.push(p);
     }
 
 }
 
-export { Canvas }
+export { DrawCanvas }

@@ -1,6 +1,7 @@
 @use '$scss/set/variable' as var;
 
 .portfolio{
+    mix-blend-mode:difference;
     .inner{
         padding-bottom:15rem
     }
@@ -32,9 +33,10 @@
     }
     swiper-slide{
         width:31.8rem;
+        pointer-events:none
     }
     .box{
-        display:block;
+        @include var.flex(space-between, stretch, nowrap, column);
         position:relative;
         width:100%;
         height:100%;
@@ -72,8 +74,10 @@
             --bg:#cedffd
         }
         &:hover{
+            border-radius:5rem;
             filter:grayscale(0);
             box-shadow:1px 1px 10px var.$mint, -2px -2px 10px var.$pink;
+            transition:border-radius 0.4s;
             .site_info{
                 color:#fff
             }
@@ -170,39 +174,40 @@
         swiper-container{
             height:calc((28rem * 2) + 20px)
         }
+        .box{
+            border-radius:2rem !important
+        }
     }
     @include var.custom(640px){
+        .title{
+            .outline{
+                stroke-dasharray:64rem;
+            }
+        }
+        swiper-container{
+            height:100vw
+        }
+        swiper-slide{
+            width:40rem
+        }
         .box{
             .site_info{
                 font-size:1.8rem;
-                padding:1rem 3rem
-            }
-            .name{
-                font-size:2.4rem
-            }
-        }
-    }
-    @include var.custom(500px){
-        swiper-container{
-            height:82vw
-        }
-        .box{
-            .site_info{
                 padding:2rem 3rem
             }
             .name{
-                font-size:2.8rem
+                font-size:3.4rem
             }
             .coment{
                 bottom:auto;
-                top:-1rem;
-                font-size:1.8rem
+                top:-1.5rem;
+                font-size:2.4rem
             }
         }
     }
     @include var.custom(400px){
         swiper-container{
-            height:328px
+            height:390px
         }
         .box{
             @include var.flex(space-evenly, stretch, wrap, column)

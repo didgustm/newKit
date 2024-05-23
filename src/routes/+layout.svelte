@@ -2,10 +2,25 @@
     import '$scss/set/common.scss'
     import { onMount } from 'svelte'
     import { spring } from 'svelte/motion'
+    import Lenis from '@studio-freight/lenis'
     import { gsap } from 'gsap'
-    import Fixed from '$comp/fixed/Fixed.svelte'
-
-    let isMobile, w = 0, h = 0, cursor, cc = '';
+    import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+    import ScrollToPlugin from 'gsap/dist/ScrollToPlugin'
+    import { throttle } from '$js/throttle'
+    import Quick from '$comp/quick/Quick.svelte';
+    
+    gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
+    let isMobile, cursor, cc = '';
+    let strokeOffset = 160;
+    let lenis = new Lenis({
+        syncTouch: true,
+        syncTouchLerp: 0.1
+    });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1400)
+    });
+    gsap.ticker.lagSmoothing(0)
     const mousePos = spring({ x:0, y:0 }, { stiffness:0.5 });
     const onMouseMove = (event) => {
         if(!isMobile){
@@ -28,10 +43,20 @@
                 x.style.setProperty('--x', `1.5rem`)
                 x.style.setProperty('--y', `-1.5rem`);
             });
+            document.querySelector('main').setAttribute('data-lenis-prevent', true)
+        } else{
+            document.querySelector('main').removeAttribute('data-lenis-prevent')
         }
     }
     function matches(){
         return window.matchMedia('(pointer:coarse)').matches
+    }
+    const onScroll = () => {
+        let progress = scrollY / (document.querySelector('main').offsetHeight - innerHeight);
+        strokeOffset = 160 - progress*160;
+    }
+    function scrollTo(target){
+        gsap.to(window, { scrollTo: target })
     }
     onMount(() => {
         isMobile = matches();
@@ -40,6 +65,9 @@
                 x.style.setProperty('--x', `1.5rem`)
                 x.style.setProperty('--y', `-1.5rem`);
             });
+            document.querySelector('main').setAttribute('data-lenis-prevent', true)
+        } else{
+            document.querySelector('main').removeAttribute('data-lenis-prevent')
         }
     })
 </script>
@@ -50,11 +78,9 @@
 <svelte:window
     on:mousemove={onMouseMove}
     on:resize={onResize}
-    bind:innerWidth={w}
-    bind:innerHeight={h}
+    on:scroll={throttle(onScroll, 50)}
 />
 
-<Fixed { w } { h } />
 {#if !isMobile}
 <div 
     class="cursor { cc }"
@@ -65,6 +91,7 @@
     <div class="scale"></div>
 </div>
 {/if}
+<Quick { strokeOffset } { scrollTo } />
 <main>
     <slot />
 </main>

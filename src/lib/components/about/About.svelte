@@ -6,13 +6,16 @@
     import Edu from './Edu.svelte'
     import Tools from './Tools.svelte'
     import Skills from './Skills.svelte'
+    import GridBg from '$comp/common/GridBg.svelte'
     import { aboutScr } from '$js/utils';
 
+    export let w, h;
     let motion = false;
     onMount(() => aboutScr(motion))
 </script>
 
 <section id="about" class="about">
+    <GridBg { w } { h } />
     <div class="inner">
         <Title />
         <div class="c_info">

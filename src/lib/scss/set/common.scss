@@ -6,6 +6,7 @@
 html{
     font-size: 62.5%;
     font-family: mont, pre;
+    background:var.$black;
     touch-action: manipulation;
     overflow-x:hidden;
     @include var.custom(var.$tablet){
@@ -29,11 +30,54 @@ body{
     color:var.$black;
     @include var.fontWeight(400)
 }
+main{
+    position:relative
+}
 .fixBg{
     position:fixed;
     width:100vw;
-    height:100vh;
-    background:var.$black
+    height:100%;
+    z-index:2;
+    mix-blend-mode:lighten;
+    pointer-events:none;
+    &.diff{
+        mix-blend-mode:difference
+    }
+    .canvas{
+        @include var.posWide();
+        canvas{
+            @include var.absDefault(0, calc(50% - 800px))
+        }
+    }
+}
+.grid_bg{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:var.$black;
+    svg{
+        width:100%;
+        height:100%
+    }
+    .lines{
+        stroke-dasharray:160rem;
+        stroke-dashoffset:160rem
+    }
+    .line01{
+        animation:draw 7s linear infinite
+    }
+    .line02{
+        animation:draw 4s ease-in infinite
+    }
+    .line03{
+        animation:draw 3s ease-in-out infinite
+    }
+    .line04{
+        animation:draw 5s ease infinite
+    }
+    .line05{
+        animation:draw 15s linear infinite
+    }
 }
 section{
     position:relative;
@@ -71,7 +115,10 @@ section{
             filter:drop-shadow(-2px -2px 2px var.$mint);
             transform:translate(var(--x, 0), var(--y, 0))
         }
-    }   
+    }
+    @include var.custom(640px){
+        font-size:10rem
+    }
 }
 .over *{
     pointer-events:none
@@ -91,8 +138,7 @@ section{
         backdrop-filter:blur(2px);
         box-shadow:3px 3px 10px var.$mint, -3px -3px 10px var.$pink;
         opacity:0;
-        transform:sclae(0);
-        visibility:hidden;
+        transform:scale(0);
         z-index:-1;
         transition:transform, opacity 1s ease;
     }
@@ -102,7 +148,6 @@ section{
         .scale{
             transform:scale(1);
             opacity:1;
-            visibility:visible;
             z-index:1
         }
     }
@@ -126,5 +171,8 @@ html.lenis {
 .footer{
     width:100%;
     padding-top:16rem;
-    text-align:right
+    text-align:right;
+    @include var.custom(var.$mobile){
+        font-size:2.4rem
+    }
 }

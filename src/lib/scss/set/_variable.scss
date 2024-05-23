@@ -2,7 +2,7 @@ $pink:#EA445A;
 $mint:#74F0ED;
 $black:#000;
 $white:#fff;
-$gray:#cdcdcd;
+$gray:#a1a1a1;
 
 $tablet:1200px;
 $mobile:768px;
@@ -133,5 +133,55 @@ $landscape:500px;
     }
     100%{
         stroke-dashoffset:-160rem
+    }
+}
+@keyframes draw02{
+    25%{
+        stroke-dashoffset:0
+    }
+    50%{
+        stroke-dashoffset:0
+    }
+    75%{
+        stroke-dashoffset:var(--dash)
+    }
+    100%{
+        stroke-dashoffset:var(--dash)
+    }
+}
+@keyframes rotation{
+    0%{
+        transform:translate(0)
+    }
+    25%{
+        transform:translate(100%, 0);
+        box-shadow:1px 1px 10px $mint, -2px -2px 10px $pink;
+    }
+    50%{
+        transform:translate(100%, 100%)
+    }
+    75%{
+        transform:translate(0, 100%)
+    }
+    100%{
+        transform:translate(0, 0)
+    }
+}
+@keyframes rotation02{
+    0%{
+        transform:translate(100%, 100%)
+    }
+    25%{
+        transform:translate(0, 100%)
+    }
+    50%{
+        transform:translate(0, 0);
+        box-shadow:1px 1px 10px $mint, -2px -2px 10px $pink;
+    }
+    75%{
+        transform:translate(100%, 0)
+    }
+    100%{
+        transform:translate(100%, 100%)
     }
 }

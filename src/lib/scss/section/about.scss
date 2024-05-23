@@ -2,6 +2,32 @@
 
 .about{
     color:var.$white;
+    .grid_bg{
+        position:absolute;
+        bottom:0;
+        transform:rotate(180deg);
+        &::after{
+            @include var.pseudo(100%, 100%);
+            top:0;
+            left:0;
+            background:linear-gradient(0deg, transparent 80%, #000 100%);
+            z-index:1
+        }
+    }
+    .rects{
+        position:absolute;
+        div{
+            position:absolute;
+            background:var.$white;
+            border-radius:5px
+        }
+        .rect01{
+            animation:rotation var(--d, 3s) ease infinite
+        }
+        .rect02{
+            animation:rotation02 var(--d, 3s) ease infinite
+        }
+    }
     .title{
         @include var.flex(center);
         > div{
@@ -34,8 +60,14 @@
         grid-template-columns:1fr 1fr;
         gap:0 20rem;
         padding-top:15rem;
-        dl:not(:first-child){
-            padding-top:10rem
+        .about_list{
+            position:relative;
+            &:not(:first-child){
+                padding-top:10rem
+            }
+        }
+        dl{
+            mix-blend-mode:difference;
         }
         dt{
             @include var.setFont(2.4rem, 550);
@@ -62,7 +94,53 @@
             }
         }
     }
+    .career{
+        .rects{
+            --d:2s;
+            left:0;
+            bottom:0;
+            width:4rem;
+            height:4rem;
+            transform:rotate(45deg);
+            div{
+                width:2rem;
+                height:2rem
+            }
+        }
+        svg{
+            @include var.absDefault(-40%, 15%);
+            overflow:visible;
+        }
+        .shape01{
+            --dash:-1100px;
+            stroke-dasharray:1100px;
+            stroke-dashoffset:1100px;
+            animation:draw02 6s linear infinite
+        }
+    }
     .tools{
+        .shape04{
+            @include var.absDefault(0, 50%);
+            width:5rem;
+            height:5rem;
+            animation:load_circle 2s ease infinite;
+            .bar{
+                @include var.absDefault(calc(50% - 3px), 0);
+                width:100%;
+                height:6px;
+                border-radius:6px;
+                background:var.$white;
+            }
+            .bar02{
+                transform:rotate(45deg)
+            }
+            .bar03{
+                transform:rotate(90deg)
+            }
+            .bar04{
+                transform:rotate(135deg)
+            }
+        }
         dd{
             display:grid;
             grid-template-columns:repeat(4, 1fr);
@@ -80,7 +158,29 @@
             }
         }
     }
+    .edu{
+        .rects{
+            right:0;
+            bottom:0;
+            width:5rem;
+            height:5rem;
+            div{
+                width:2.5rem;
+                height:2.5rem
+            }
+        }
+    }
     .skills{
+        svg{
+            @include var.absDefault(3rem, 30%);
+            overflow:visible
+        }
+        .shape02{
+            --dash:-500px;
+            stroke-dasharray:500px;
+            stroke-dashoffset:500px;
+            animation:draw02 4s linear 1s infinite
+        }
         dd > div{
             @include var.flex(flex-start, center);
             gap:2rem;
@@ -156,23 +256,34 @@
         }
     }
     @include var.custom(640px){
+        .title{
+            .small{
+                font-size:3.4rem
+            }
+        }
         .c_info{
             dt{
-                font-size:2.8rem
+                font-size:3.8rem
             }
             .contents{
-                font-size:2.2rem;
+                font-size:3.2rem;
+                gap:2rem;
                 .years{
-                    min-width:27%
+                    min-width:45%
                 }
                 .value{
-                    font-size:1.8rem
+                    font-size:2.4rem
                 }
             }
         }
         .tools{
             dd{
-                font-size:2rem
+                grid-template-columns:repeat(3, 1fr);
+                font-size:2.8rem
+            }
+            img{
+                width:8rem;
+                margin-bottom:2rem
             }
         }
         .skills{
@@ -181,10 +292,10 @@
             }
             p{
                 width:15%;
-                font-size:2rem
+                font-size:2.8rem
             }
             .track{
-                width:55%;
+                width:65%;
                 height:1.5rem;
                 border-radius:1.5rem
             }
