@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const introScr = () => {
     let g = gsap.timeline({ duration:0.8 });
-        g.fromTo('.intro .outline', { strokeDashoffset:`30rem` }, { strokeDashoffset:0, duration:2, ease:'none' })
+        g.to('.intro .outline', { strokeDashoffset:0, duration:2, ease:'none' })
         .fromTo('.intro .fillText', { opacity:0 }, { opacity:1, ease:'none' }, '-=1')
         .fromTo('.scrollDown', { opacity:0, xPercent:50 }, { opacity:1, xPercent:0 }, '<')
         .fromTo('.intro .coment', { opacity:0, yPercent:100 }, { opacity:1, yPercent:0 }, '-=0.5');
@@ -77,7 +77,7 @@ export const pfScr = (motion) => {
     let aos = document.querySelectorAll('.portfolio .aos');
     let motion01 = gsap.timeline({ paused:true }),
     motion02 = gsap.timeline({ paused:true });
-    motion01.fromTo('.portfolio .outline', { strokeDashoffset:'51rem' }, { strokeDashoffset:0, duration:2, ease:'none' })
+    motion01.to('.portfolio .outline', { strokeDashoffset:0, duration:2, ease:'none' })
     .fromTo('.portfolio .fillText', { opacity:0 }, { opacity:1, ease:'none' }, '-=1');
     motion02.fromTo('.portfolio swiper-slide:nth-child(odd)', { opacity:0, xPercent:-25 }, { opacity:1, x:0, xPercent:0, duration:1,
         onStart: () => { document.querySelectorAll('.portfolio swiper-slide').forEach(x => x.style.pointerEvents = 'auto') }
@@ -116,7 +116,7 @@ export const contactScr = (motion) => {
     let aos = document.querySelectorAll('.contact .aos');
     let motion01 = gsap.timeline({ paused:true }),
     motion02 = gsap.timeline({ paused:true });
-    motion01.fromTo('.contact .outline', { strokeDashoffset:`36rem` }, { strokeDashoffset:0, duration:2, ease:'none' })
+    motion01.to('.contact .outline', { strokeDashoffset:0, duration:2, ease:'none' })
     .fromTo('.contact .fillText', { opacity:0 }, { opacity:1, ease:'none' }, '-=1');
     motion02.fromTo('.contact .list01 p', { scale:1.2, y:50, opacity:0 }, { scale:1, y:0, opacity:1 })
     .fromTo('.contact .list01 img', { scale:0 }, { scale:1 }, '<')

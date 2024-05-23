@@ -8,7 +8,8 @@
     .title{
         color:var.$white;
         .outline{
-            stroke-dasharray:51rem
+            stroke-dasharray:51rem;
+            stroke-dashoffset:51rem
         }
     }
     .grid{
