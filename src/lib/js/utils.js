@@ -152,13 +152,3 @@ export const contactScr = (motion) => {
         })
     })
 }
-
-export const fixedScr = (motion) => {
-    let pin = gsap.timeline({
-        scrollTrigger: {
-            trigger: 'main',
-            pin: '.fixBg',
-            markers: true
-        }
-    })
-}
