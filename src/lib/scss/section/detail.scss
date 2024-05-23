@@ -23,6 +23,7 @@
         text-shadow:3px 3px 5px var.$pink;
         filter:drop-shadow(-2px -2px 2px var.$mint);
         overflow:hidden;
+        word-break:break-all;
         p{
             opacity:1;
             transform:rotate(0)

@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const introScr = () => {
     let g = gsap.timeline({ duration:0.8 });
-        g.fromTo('.intro .outline', { strokeDashoffset:300 }, { strokeDashoffset:0, duration:2, ease:'none' })
+        g.fromTo('.intro .outline', { strokeDashoffset:`30rem` }, { strokeDashoffset:0, duration:2, ease:'none' })
         .fromTo('.intro .fillText', { opacity:0 }, { opacity:1, ease:'none' }, '-=1')
         .fromTo('.scrollDown', { opacity:0, xPercent:50 }, { opacity:1, xPercent:0 }, '<')
         .fromTo('.intro .coment', { opacity:0, yPercent:100 }, { opacity:1, yPercent:0 }, '-=0.5');
@@ -116,7 +116,7 @@ export const contactScr = (motion) => {
     let aos = document.querySelectorAll('.contact .aos');
     let motion01 = gsap.timeline({ paused:true }),
     motion02 = gsap.timeline({ paused:true });
-    motion01.fromTo('.contact .outline', { strokeDashoffset:360 }, { strokeDashoffset:0, duration:2, ease:'none' })
+    motion01.fromTo('.contact .outline', { strokeDashoffset:`36rem` }, { strokeDashoffset:0, duration:2, ease:'none' })
     .fromTo('.contact .fillText', { opacity:0 }, { opacity:1, ease:'none' }, '-=1');
     motion02.fromTo('.contact .list01 p', { scale:1.2, y:50, opacity:0 }, { scale:1, y:0, opacity:1 })
     .fromTo('.contact .list01 img', { scale:0 }, { scale:1 }, '<')
