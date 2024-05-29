@@ -94,17 +94,6 @@ $landscape:500px;
         transform:rotate(2turn); stroke-dashoffset:0
     }
 }
-@keyframes gradient{
-    0% {
-        background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
 @keyframes v-line{
     30%{
         transform:translateX(0)

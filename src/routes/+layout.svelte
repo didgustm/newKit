@@ -32,11 +32,6 @@
                 x.style.setProperty('--x', `${(innerWidth/2 - $mousePos.x) * 0.03}px`)
                 x.style.setProperty('--y', `${(innerHeight/2 - $mousePos.y) * 0.03}px`)
             });
-            if(event.target.classList.contains('over')){
-                cc = 'overlay'
-            } else{
-                cc = ''
-            }
         }
     }
     const onResize = () => {

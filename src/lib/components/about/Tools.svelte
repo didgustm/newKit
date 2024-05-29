@@ -4,7 +4,36 @@
     import psd from '$img/about/psd.svg'
     import figma from '$img/about/figma.svg'
     import xd from '$img/about/xd.svg'
-    import ai from '$img/about/ai.svg'
+    import ai from '$img/about/ai.svg';
+
+    export let toolItems;
+    let items = [
+        {
+            img: vscode,
+            text: 'VSCode'
+        },
+        {
+            img: github,
+            text: 'Github',
+            invert: true
+        },
+        {
+            img: psd,
+            text: 'Photoshop'
+        },
+        {
+            img: figma,
+            text: 'Figma'
+        },
+        {
+            img: xd,
+            text: 'Adobe XD'
+        },
+        {
+            img: ai,
+            text: 'Illustrator'
+        }
+    ]
 </script>
 
 <div class="about_list tools aos">
@@ -17,30 +46,16 @@
     <dl>
         <dt>TOOLS</dt>
         <dd>
-            <div>
-                <img src="{ vscode }" alt="">
-                <p>Visual Studio <br> Code</p>
+            {#each items as item, idx}
+            <div class="item" bind:this={toolItems[idx]}>
+                {#if item.invert}
+                <img class="invert" src="{item.img}" alt="{item.text}">
+                {:else}
+                <img src="{item.img}" alt="{item.text}">
+                {/if}
+                <p>{item.text}</p>
             </div>
-            <div>
-                <img src="{ github }" alt="" class="invert">
-                <p>Github</p>
-            </div>
-            <div>
-                <img src="{ psd }" alt="">
-                <p>Photoshop</p>
-            </div>
-            <div>
-                <img src="{ figma }" alt="">
-                <p>Figma</p>
-            </div>
-            <div>
-                <img src="{ xd }" alt="">
-                <p>Adobe XD</p>
-            </div>
-            <div>
-                <img src="{ ai }" alt="">
-                <p>Illustrator</p>
-            </div>
+            {/each}
         </dd>
     </dl>
 </div>

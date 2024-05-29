@@ -45,8 +45,16 @@ main{
     }
     .canvas{
         @include var.posWide();
+        // filter:url(#goo);
         canvas{
-            @include var.absDefault(0, calc(50% - 800px))
+            @include var.absDefault()
+        }
+    }
+    @include var.custom(1600px){
+        .canvas{
+            canvas{
+                left:calc(50% - 800px)
+            }
         }
     }
 }

@@ -2,11 +2,13 @@
 
 .portfolio{
     mix-blend-mode:difference;
+    background:linear-gradient(180deg, var.$black, var.$black, rgba(255,255,255,.3));
     .inner{
         padding-bottom:15rem
     }
     .title{
         color:var.$white;
+        white-space:nowrap;
         .outline{
             stroke-dasharray:51rem;
             stroke-dashoffset:51rem
@@ -33,8 +35,7 @@
         }
     }
     swiper-slide{
-        width:31.8rem;
-        pointer-events:none
+        width:31.8rem
     }
     .box{
         @include var.flex(space-between, stretch, nowrap, column);
@@ -45,6 +46,7 @@
         background:var(--bg, #fff);
         border-radius:2rem;
         color:var.$black;
+        box-shadow:0.4rem 0.5rem 1rem rgba(255,255,255,.5);
         overflow:hidden;
         filter:grayscale(1);
         &.box9{
@@ -77,7 +79,7 @@
         &:hover{
             border-radius:5rem;
             filter:grayscale(0);
-            box-shadow:1px 1px 10px var.$mint, -2px -2px 10px var.$pink;
+            // box-shadow:1px 1px 10px var.$mint, -2px -2px 10px var.$pink;
             transition:border-radius 0.4s;
             .site_info{
                 color:#fff
@@ -139,7 +141,6 @@
         }
         .box{
             filter:grayscale(0);
-            box-shadow:1px 1px 10px var.$mint, -2px -2px 10px var.$pink;
             .coment{
                 bottom:5rem;
                 opacity:1
@@ -182,7 +183,8 @@
     @include var.custom(640px){
         .title{
             .outline{
-                stroke-dasharray:64rem;
+                stroke-dasharray:115rem;
+                stroke-dashoffset:115rem
             }
         }
         swiper-container{
@@ -212,6 +214,11 @@
         }
         .box{
             @include var.flex(space-evenly, stretch, wrap, column)
+        }
+    }
+    @media (max-height: 520px) and (min-width: 560px){
+        swiper-container{
+            height:50vw
         }
     }
 }

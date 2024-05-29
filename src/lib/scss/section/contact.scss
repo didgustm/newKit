@@ -2,11 +2,12 @@
 
 .contact{
     color:var.$white;
+    background:linear-gradient(180deg, rgba(255,255,255,.3), rgba(255,255,255,.1), var.$black);
     .title{
         text-align:right;
         .outline{
             stroke-dasharray:44rem;
-            stroke-dashoffset:44rem
+            stroke-dashoffset:44rem;
         }
     }
     .list{

@@ -37,7 +37,7 @@
             />
             <path 
                 class="line04"
-                d="M{Math.floor( (w/1.2) / 100 ) * 100},0 {Math.floor((w/1.2)/100) * 100},{h}"
+                d="M{Math.floor( (w - 5) / 100 ) * 100},0 {Math.floor((w - 5)/100) * 100},{h}"
                 stroke="#fff"
                 opacity="0.5"
             />

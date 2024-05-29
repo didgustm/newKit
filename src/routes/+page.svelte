@@ -3,10 +3,10 @@
     import Intro from '$comp/intro/Intro.svelte'
     import About from '$comp/about/About.svelte'
     import Portfolio from '$comp/portfolio/Portfolio.svelte'
-    import Contact from '$comp/contact/Contact.svelte'
+    import Contact from '$comp/contact/Contact.svelte';
 
     export let data;
-    let w = 0, h = 0;
+    let w = innerWidth, h = innerHeight;
 </script>
 
 <svelte:window
@@ -14,8 +14,8 @@
     bind:innerHeight={h}
 />
 
-<Matter />
+<Matter { h } />
 <Intro { w } { h } />
-<About { w } { h } />
+<About { h } />
 <Portfolio { data } />
 <Contact />

@@ -1,35 +1,16 @@
 @use '$scss/set/variable' as var;
 
 .about{
+    height:100svh;
     color:var.$white;
-    .grid_bg{
-        position:absolute;
-        bottom:0;
-        transform:rotate(180deg);
-        &::after{
-            @include var.pseudo(100%, 100%);
+    .inner{
+        @include var.flexCenter();
+        padding:{
             top:0;
-            left:0;
-            background:linear-gradient(0deg, transparent 80%, #000 100%);
-            z-index:1
-        }
-    }
-    .rects{
-        position:absolute;
-        div{
-            position:absolute;
-            background:var.$white;
-            border-radius:5px
-        }
-        .rect01{
-            animation:rotation var(--d, 3s) ease infinite
-        }
-        .rect02{
-            animation:rotation02 var(--d, 3s) ease infinite
+            bottom:0
         }
     }
     .title{
-        @include var.flex(center);
         > div{
             position:relative;
         }
@@ -47,7 +28,7 @@
             top:1rem;
             left:-10rem;
             @include var.circle(7rem);
-            box-shadow:2px 2px 5px var.$mint;
+            box-shadow:3px 3px 10px rgba(255,255,255,.5);
             overflow:hidden;
             img{
                 width:100%;
@@ -55,17 +36,14 @@
             }
         }
     }
-    .c_info{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:0 20rem;
-        padding-top:15rem;
-        .about_list{
-            position:relative;
-            &:not(:first-child){
-                padding-top:10rem
-            }
-        }
+    .right{
+        position:relative
+    }
+    .about_list{
+        position:absolute;
+        right:4rem;
+        top:50%;
+        width:40%;
         dl{
             mix-blend-mode:difference;
         }
@@ -94,53 +72,7 @@
             }
         }
     }
-    .career{
-        .rects{
-            --d:2s;
-            left:0;
-            bottom:0;
-            width:4rem;
-            height:4rem;
-            transform:rotate(45deg);
-            div{
-                width:2rem;
-                height:2rem
-            }
-        }
-        svg{
-            @include var.absDefault(-40%, 15%);
-            overflow:visible;
-        }
-        .shape01{
-            --dash:-1100px;
-            stroke-dasharray:1100px;
-            stroke-dashoffset:1100px;
-            animation:draw02 6s linear infinite
-        }
-    }
     .tools{
-        .shape04{
-            @include var.absDefault(0, 50%);
-            width:5rem;
-            height:5rem;
-            animation:load_circle 2s ease infinite;
-            .bar{
-                @include var.absDefault(calc(50% - 3px), 0);
-                width:100%;
-                height:6px;
-                border-radius:6px;
-                background:var.$white;
-            }
-            .bar02{
-                transform:rotate(45deg)
-            }
-            .bar03{
-                transform:rotate(90deg)
-            }
-            .bar04{
-                transform:rotate(135deg)
-            }
-        }
         dd{
             display:grid;
             grid-template-columns:repeat(4, 1fr);
@@ -158,29 +90,7 @@
             }
         }
     }
-    .edu{
-        .rects{
-            right:0;
-            bottom:0;
-            width:5rem;
-            height:5rem;
-            div{
-                width:2.5rem;
-                height:2.5rem
-            }
-        }
-    }
     .skills{
-        svg{
-            @include var.absDefault(3rem, 30%);
-            overflow:visible
-        }
-        .shape02{
-            --dash:-500px;
-            stroke-dasharray:500px;
-            stroke-dashoffset:500px;
-            animation:draw02 4s linear 1s infinite
-        }
         dd > div{
             @include var.flex(flex-start, center);
             gap:2rem;
@@ -196,14 +106,14 @@
             width:65%;
             height:1.2rem;
             border-radius:1.2rem;
-            background:var.$white;
+            background:rgba(255,255,255,.4);
             overflow:hidden
         }
         .gauge{
             @include var.absDefault();
             right:0;
             height:110%;
-            background:linear-gradient(90deg, rgba(234,68,90,.5), var.$pink 80%);
+            background:linear-gradient(90deg, rgba(255,255,255,.5), var.$white 80%);
             border-radius:1.5rem;
             transform-origin:0 50%;
             clip-path:polygon(0 -5%, var(--x) -5%, var(--x) 105%, 0 105%);
@@ -233,20 +143,24 @@
 
     @include var.custom(var.$mobile){
         .title{
+            transform-origin:0 0;
             .dot{
                 top:0;
                 left:-12rem;
                 @include var.circle(9rem)
             }
         }
-        .c_info{
-            display:block;
-            dl:not(:first-child){
-                padding-top:7rem
+        .about_list{
+            top:calc(50vh - 5rem);
+            right:auto;
+            left:5rem;
+            width:80%;
+            opacity:0;
+            .contents{
+                margin-bottom:5rem
             }
         }
         .tools{
-            padding-top:7rem;
             dd{
                 grid-template-columns:repeat(5, 1fr)
             }
@@ -261,7 +175,7 @@
                 font-size:3.4rem
             }
         }
-        .c_info{
+        .about_list{
             dt{
                 font-size:3.8rem
             }
