@@ -15,7 +15,6 @@
     let mm = gsap.matchMedia();
     let toolItems = [], gauges = [];
     onMount(() => {
-        console.log(h, innerHeight)
         let ctx = gsap.context(() => {        
             let pin = gsap.timeline({
                 scrollTrigger: {

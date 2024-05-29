@@ -32,7 +32,6 @@
                         }
                     },
                     onEnter: () => {
-                        console.log(section);
                         if(section == 'about'){
                             canvas.style.opacity = 0.3;
                             ph.Composite.remove(ph.world, ph.introShapes);
@@ -74,7 +73,6 @@
         })
 
         window.addEventListener('resize', () => {
-            console.log(h, innerHeight)
             ph.render.canvas.height = h;
             ph.render.canvas.width = innerWidth > 1600? innerWidth: 1600;
             ph.Body.setPosition(ph.floor, { x:innerWidth / 2, y:h+10 });
