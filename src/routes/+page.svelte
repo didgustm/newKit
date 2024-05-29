@@ -16,6 +16,6 @@
 
 <Matter { h } />
 <Intro { w } { h } />
-<About { h } />
+<About />
 <Portfolio { data } />
 <Contact />
