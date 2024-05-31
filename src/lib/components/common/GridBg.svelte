@@ -37,13 +37,13 @@
             />
             <path 
                 class="line04"
-                d="M{Math.floor( (w - 5) / 100 ) * 100},0 {Math.floor((w - 5)/100) * 100},{h}"
+                d="M1400,0 1400,{h}"
                 stroke="#fff"
                 opacity="0.5"
             />
             <path 
                 class="line05"
-                d="M{Math.floor( (w/2) / 100 ) * 100},0 L{Math.floor( (w/2) / 100 ) * 100},50 {Math.floor( (w/2) / 100 ) * 100 + 50},50 {Math.floor( (w/2) / 100 ) * 100 + 50},100 {Math.floor( (w/2) / 100 ) * 100 + 150},100, {Math.floor( (w/2) / 100 ) * 100 + 150},150 {Math.floor( (w/2) / 100 ) * 100 + 250},150 {Math.floor( (w/2) / 100 ) * 100 + 250},50 {Math.floor( (w/2) / 100 ) * 100 + 300},50 {Math.floor( (w/2) / 100 ) * 100 + 300},0"
+                d="M800,0 800,50 850,50 850,100 950,100, 950,150 1050,150 1050,50 1100,50 1100,0"
                 stroke="#74F0ED"
                 opacity="0.5"
             />
