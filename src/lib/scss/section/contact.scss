@@ -31,6 +31,9 @@
                 filter:invert(1)
             }
         }
+        a:hover{
+            text-decoration:underline
+        }
     }
 
     @include var.custom(640px){
